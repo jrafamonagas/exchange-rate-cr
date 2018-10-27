@@ -11,14 +11,18 @@ import TextField from "../components/text-field";
 const CalculatorContainer = styled("div")`
   align-items: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+  }
 `;
 
 const ExchangeButton = styled("button")`
   background-color: none;
   border: none;
   cursor: pointer;
-  margin: 0 32px;
+  margin: 32px;
   outline: none;
   transition: transform 0.25s ease;
 

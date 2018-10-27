@@ -13,13 +13,18 @@ const Grid = styled("div")`
   display: grid;
   grid-gap: 24px;
   grid-template-areas:
-    "buy buy sale sale"
-    "calculator calculator calculator calculator";
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 160px);
+    "buy"
+    "sale"
+    "calculator";
   margin: 24px;
   max-width: 800px;
   width: 100%;
+
+  @media (min-width: 600px) {
+    grid-template-areas:
+      "buy buy sale sale"
+      "calculator calculator calculator calculator";
+  }
 `;
 
 export default function Container({ children }: { children: React$Node }) {

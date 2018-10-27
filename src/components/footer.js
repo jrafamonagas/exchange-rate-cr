@@ -4,6 +4,7 @@ import styled from "react-emotion";
 
 const FooterBase = styled("div")`
   background-color: #fff;
+  padding: 32px;
 `;
 
 export default function Footer() {
