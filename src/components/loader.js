@@ -10,7 +10,7 @@ export default function Loader() {
 
   return (
     <Fragment>
-      <Placeholder gridArea="purchase" color={color} />
+      <Placeholder gridArea="buy" color={color} />
       <Placeholder gridArea="sale" color={color} />
       <Placeholder gridArea="calculator" color={color} />
     </Fragment>

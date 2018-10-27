@@ -33,7 +33,7 @@ const ConversionResultContainer = styled("span")`
 `;
 
 export default function ExchangeRate() {
-  const purchase = ExchangeRateFetcher.read("317");
+  const buy = ExchangeRateFetcher.read("317");
   const sell = ExchangeRateFetcher.read("318");
 
   const [conversionValue, setConversionValue] = useState("0");
@@ -45,8 +45,8 @@ export default function ExchangeRate() {
   const conversionResult = parseFloat(
     conversionValue > 0
       ? isDollar
-        ? conversionValue * purchase
-        : conversionValue / purchase
+        ? conversionValue * buy
+        : conversionValue / buy
       : 0
   ).toFixed(2);
 
@@ -63,8 +63,8 @@ export default function ExchangeRate() {
 
   return (
     <Fragment>
-      <Card gridArea="purchase" title="Purchase">
-        ₡{purchase}
+      <Card gridArea="buy" title="Buy">
+        ₡{buy}
       </Card>
 
       <Card gridArea="sale" title="Sale">

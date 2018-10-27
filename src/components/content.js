@@ -13,7 +13,7 @@ const Grid = styled("div")`
   display: grid;
   grid-gap: 24px;
   grid-template-areas:
-    "purchase purchase sale sale"
+    "buy buy sale sale"
     "calculator calculator calculator calculator";
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 160px);
