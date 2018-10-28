@@ -2,6 +2,7 @@
 // $FlowFixMe
 import React, { useState, Fragment } from "react";
 import styled from "react-emotion";
+import NumberFormat from "react-number-format";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ExchangeRateFetcher from "../api/exchange-rate-fetcher";
@@ -40,29 +41,22 @@ export default function ExchangeRate() {
   const buy = ExchangeRateFetcher.read("317");
   const sell = ExchangeRateFetcher.read("318");
 
-  const [conversionValue, setConversionValue] = useState("0");
+  const [conversionValue, setConversionValue] = useState();
   const [conversionCurrency, setConversionCurrency] = useState(1);
 
   const isDollar = conversionCurrency === 1;
   const conversionInputLabel = isDollar ? "$" : "₡";
   const conversionOutputLabel = isDollar ? "₡" : "$";
-  const conversionOutput = parseFloat(
-    conversionValue > 0
-      ? isDollar
-        ? conversionValue * buy
-        : conversionValue / buy
-      : 0
-  ).toFixed(2);
+  const conversionOutput =
+    (isDollar ? conversionValue * buy : conversionValue / buy) || 0;
 
-  const handleChange = e => {
-    const { value } = e.target;
-    const nextValue = parseFloat(value) || 0;
-    setConversionValue(nextValue.toString());
+  const handleChange = ({ value }) => {
+    setConversionValue(value === "0" ? "" : value);
   };
 
   const toggleConversionCurrency = () => {
     setConversionCurrency(conversionCurrency === 1 ? 2 : 1);
-    setConversionValue(conversionValue > 0 ? conversionOutput.toString() : 0);
+    setConversionValue(conversionOutput);
   };
 
   return (
@@ -77,19 +71,29 @@ export default function ExchangeRate() {
 
       <Card gridArea="calculator" title="Calculator">
         <CalculatorContainer>
-          <TextField
+          <NumberFormat
+            thousandSeparator
+            allowNegative={false}
+            decimalScale={isDollar ? 2 : 0}
+            customInput={TextField}
             label={conversionInputLabel}
-            type="number"
+            placeholder="0"
             value={conversionValue}
-            onChange={handleChange}
+            onValueChange={handleChange}
           />
           <ExchangeButton onClick={toggleConversionCurrency}>
             <FontAwesomeIcon icon="exchange-alt" />
           </ExchangeButton>
-          <ConversionOutputContainer>
-            {conversionOutputLabel}
-            {conversionOutput}
-          </ConversionOutputContainer>
+          <NumberFormat
+            thousandSeparator
+            displayType="text"
+            decimalScale={!isDollar ? 2 : 0}
+            prefix={conversionOutputLabel}
+            value={conversionOutput}
+            renderText={value => (
+              <ConversionOutputContainer>{value}</ConversionOutputContainer>
+            )}
+          />
         </CalculatorContainer>
       </Card>
     </Fragment>

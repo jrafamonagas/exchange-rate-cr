@@ -15,7 +15,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <Container>
         <Content>
-          <Suspense maxDuration={250} fallback={<Loader />}>
+          <Suspense maxDuration={0} fallback={<Loader />}>
             <ExchangeRate />
           </Suspense>
         </Content>
