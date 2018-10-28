@@ -31,7 +31,7 @@ const ExchangeButton = styled("button")`
   }
 `;
 
-const ConversionResultContainer = styled("span")`
+const ConversionOutputContainer = styled("span")`
   font-size: 2em;
   font-weight: bold;
 `;
@@ -45,8 +45,8 @@ export default function ExchangeRate() {
 
   const isDollar = conversionCurrency === 1;
   const conversionInputLabel = isDollar ? "$" : "₡";
-  const conversionResultLabel = isDollar ? "₡" : "$";
-  const conversionResult = parseFloat(
+  const conversionOutputLabel = isDollar ? "₡" : "$";
+  const conversionOutput = parseFloat(
     conversionValue > 0
       ? isDollar
         ? conversionValue * buy
@@ -62,7 +62,7 @@ export default function ExchangeRate() {
 
   const toggleConversionCurrency = () => {
     setConversionCurrency(conversionCurrency === 1 ? 2 : 1);
-    setConversionValue(conversionValue > 0 ? conversionResult.toString() : 0);
+    setConversionValue(conversionValue > 0 ? conversionOutput.toString() : 0);
   };
 
   return (
@@ -86,10 +86,10 @@ export default function ExchangeRate() {
           <ExchangeButton onClick={toggleConversionCurrency}>
             <FontAwesomeIcon icon="exchange-alt" />
           </ExchangeButton>
-          <ConversionResultContainer>
-            {conversionResultLabel}
-            {conversionResult}
-          </ConversionResultContainer>
+          <ConversionOutputContainer>
+            {conversionOutputLabel}
+            {conversionOutput}
+          </ConversionOutputContainer>
         </CalculatorContainer>
       </Card>
     </Fragment>
