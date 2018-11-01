@@ -1,23 +1,23 @@
 /* @flow */
-import React, { Fragment } from "react";
-import Skeleton from "react-skeleton-loader";
+import React, { Fragment } from 'react'
+import Skeleton from 'react-skeleton-loader'
 
-import Card from "./card";
-import useTheme from "../utils/use-theme";
+import Card from './card'
+import useTheme from '../utils/use-theme'
 
-export default function Loader() {
-  const { secondary: color } = useTheme();
+export default function Loader () {
+  const { secondary: color } = useTheme()
 
   return (
     <Fragment>
-      <Placeholder gridArea="buy" color={color} />
-      <Placeholder gridArea="sale" color={color} />
-      <Placeholder gridArea="calculator" color={color} />
+      <Placeholder gridArea='buy' color={color} />
+      <Placeholder gridArea='sale' color={color} />
+      <Placeholder gridArea='calculator' color={color} />
     </Fragment>
-  );
+  )
 }
 
-function Placeholder({ gridArea, color }: { gridArea: string, color: string }) {
+function Placeholder ({ gridArea, color }: { gridArea: string, color: string }) {
   return (
     <Card gridArea={gridArea}>
       <h1>
@@ -27,5 +27,5 @@ function Placeholder({ gridArea, color }: { gridArea: string, color: string }) {
         <Skeleton color={color} widthRandomness={0} />
       </p>
     </Card>
-  );
+  )
 }

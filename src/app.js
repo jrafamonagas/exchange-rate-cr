@@ -1,16 +1,16 @@
 /* @flow */
 // $FlowFixMe
-import React, { Suspense } from "react";
-import { ThemeProvider } from "emotion-theming";
+import React, { Suspense } from 'react'
+import { ThemeProvider } from 'emotion-theming'
 
-import theme from "./config/theme";
-import Container from "./components/container";
-import Content from "./components/content";
-import Footer from "./components/footer";
-import Loader from "./components/loader";
-import ExchangeRate from "./components/exchange-rate";
+import theme from './config/theme'
+import Container from './components/container'
+import Content from './components/content'
+import Footer from './components/footer'
+import Loader from './components/loader'
+import ExchangeRate from './components/exchange-rate'
 
-export default function App() {
+export default function App () {
   return (
     <ThemeProvider theme={theme}>
       <Container>
@@ -22,5 +22,5 @@ export default function App() {
         <Footer />
       </Container>
     </ThemeProvider>
-  );
+  )
 }

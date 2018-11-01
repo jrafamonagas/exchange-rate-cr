@@ -1,22 +1,22 @@
 /* @flow */
-import { unstable_createResource as createResource } from "react-cache";
+import { unstable_createResource as createResource } from 'react-cache'
 
-function exchangeRateResource(lKey: string) {
+function exchangeRateResource (lKey: string) {
   const ENDPOINT =
-    "https://cors-anywhere.herokuapp.com/https://www.bccr.fi.cr/_layouts/15/Recursos/services/CoopActions.ashx?op=consultaSDDE";
+    'https://cors-anywhere.herokuapp.com/https://www.bccr.fi.cr/_layouts/15/Recursos/services/CoopActions.ashx?op=consultaSDDE'
 
   const options = {
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify({ lKey }),
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
+      'Content-Type': 'application/x-www-form-urlencoded'
     }
-  };
+  }
 
   return fetch(ENDPOINT, options)
     .then(response => response.json())
     .then(response => response[0].Valor)
-    .then(parseFloat);
+    .then(parseFloat)
 }
 
-export default createResource(exchangeRateResource);
+export default createResource(exchangeRateResource)
