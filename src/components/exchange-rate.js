@@ -5,7 +5,7 @@ import styled from "react-emotion";
 import NumberFormat from "react-number-format";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import ExchangeRateFetcher from "../api/exchange-rate-fetcher";
+import ExchangeRateResource from "../resources/exchange-rate";
 import Card from "./card";
 import TextField from "../components/text-field";
 
@@ -38,8 +38,8 @@ const ConversionOutputContainer = styled("span")`
 `;
 
 export default function ExchangeRate() {
-  const buy = ExchangeRateFetcher.read("317");
-  const sell = ExchangeRateFetcher.read("318");
+  const buy = ExchangeRateResource.read("317");
+  const sell = ExchangeRateResource.read("318");
 
   const [conversionValue, setConversionValue] = useState();
   const [conversionCurrency, setConversionCurrency] = useState(1);
