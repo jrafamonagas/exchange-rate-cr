@@ -1,7 +1,7 @@
-/* @flow */
 import React from 'react'
 import { keyframes } from '@emotion/core'
-import styled from 'react-emotion'
+
+import styled from '../utils/styled'
 
 const appear = keyframes`
   from {
@@ -13,7 +13,11 @@ const appear = keyframes`
   }
 `
 
-const CardBase = styled('div')`
+interface CardBaseProps {
+  gridArea: string
+}
+
+const CardBase = styled.div<CardBaseProps>`
   animation: ${appear} 1s;
   background-color: #fff;
   border-radius: 8px;
@@ -22,7 +26,7 @@ const CardBase = styled('div')`
   padding: 16px;
 `
 
-const CardTitle = styled('h1')`
+const CardTitle = styled.h1<{}>`
   color: ${props => props.theme.primary};
   margin: 0;
 
@@ -36,23 +40,21 @@ const CardTitle = styled('h1')`
   }
 `
 
-export default function Card ({
+interface CardProps {
+  gridArea: string
+  title?: string
+  children: React.ReactNode
+}
+
+export default function Card({
   gridArea,
-  title,
-  children
-}: {
-  gridArea: string,
-  title?: string,
-  children: React$Node
-}) {
+  title = '',
+  children,
+}: CardProps): JSX.Element {
   return (
     <CardBase gridArea={gridArea}>
       {title && <CardTitle>{title}</CardTitle>}
       {children}
     </CardBase>
   )
-}
-
-Card.defaultProps = {
-  title: ''
 }

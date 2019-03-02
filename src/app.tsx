@@ -1,5 +1,3 @@
-/* @flow */
-// $FlowFixMe
 import React, { Suspense } from 'react'
 import { ThemeProvider } from 'emotion-theming'
 
@@ -10,7 +8,7 @@ import Footer from './components/footer'
 import Loader from './components/loader'
 import ExchangeRate from './components/exchange-rate'
 
-export default function App () {
+export default function App(): JSX.Element {
   return (
     <ThemeProvider theme={theme}>
       <Container>

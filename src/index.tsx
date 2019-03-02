@@ -1,7 +1,5 @@
-/* @flow */
 import React from 'react'
-// $FlowFixMe
-import { createRoot } from 'react-dom'
+import { unstable_createRoot as createRoot } from 'react-dom'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 

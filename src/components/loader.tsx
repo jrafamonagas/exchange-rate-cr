@@ -1,23 +1,27 @@
-/* @flow */
 import React, { Fragment } from 'react'
 import Skeleton from 'react-skeleton-loader'
 
-import Card from './card'
 import useTheme from '../utils/use-theme'
+import Card from './card'
 
-export default function Loader () {
+export default function Loader(): JSX.Element {
   const { secondary: color } = useTheme()
 
   return (
     <Fragment>
-      <Placeholder gridArea='buy' color={color} />
-      <Placeholder gridArea='sale' color={color} />
-      <Placeholder gridArea='calculator' color={color} />
+      <Placeholder gridArea="buy" color={color} />
+      <Placeholder gridArea="sale" color={color} />
+      <Placeholder gridArea="calculator" color={color} />
     </Fragment>
   )
 }
 
-function Placeholder ({ gridArea, color }: { gridArea: string, color: string }) {
+interface PlaceholderProps {
+  gridArea: string
+  color: string
+}
+
+function Placeholder({ gridArea, color }: PlaceholderProps): JSX.Element {
   return (
     <Card gridArea={gridArea}>
       <h1>

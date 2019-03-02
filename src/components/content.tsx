@@ -1,15 +1,14 @@
-/* @flow */
 import React from 'react'
-import styled from 'react-emotion'
+import styled from '../utils/styled'
 
-const ContentBase = styled('div')`
+const ContentBase = styled.div<{}>`
   align-items: center;
   display: flex;
   flex: 1;
   justify-content: center;
 `
 
-const Grid = styled('div')`
+const Grid = styled.div<{}>`
   display: grid;
   grid-gap: 24px;
   grid-template-areas:
@@ -27,7 +26,11 @@ const Grid = styled('div')`
   }
 `
 
-export default function Container ({ children }: { children: React$Node }) {
+interface ContainerProps {
+  children: React.ReactNode
+}
+
+export default function Content({ children }: ContainerProps): JSX.Element {
   return (
     <ContentBase>
       <Grid>{children}</Grid>
